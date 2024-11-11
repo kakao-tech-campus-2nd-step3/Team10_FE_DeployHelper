@@ -3,6 +3,7 @@ services:
   frontend:
     container_name: poomasi-front
     build:
+      context: .
       dockerfile: Dockerfile
     restart: always
     volumes:
