@@ -31,7 +31,7 @@ fi
 source "$NGINX_TEMPLATE"
 
 # Get Build From Temp
-TEMP_PATH="temp/${SUBDOMAIN}"
+TEMP_PATH="temp/${COMMIT_HASH}"
 if [ ! -d "$TEMP_PATH" ]; then
     echo "Temp Build Not Found"
     exit 1
