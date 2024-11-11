@@ -63,7 +63,7 @@ server {
 
     # 기본 location 블록
     location / {
-        try_files $uri /index.html;
+        try_files \$uri \$uri/ /index.html;
     }
 
     # 로그 설정
