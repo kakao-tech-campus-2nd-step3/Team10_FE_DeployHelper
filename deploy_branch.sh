@@ -28,7 +28,7 @@ if [ ! -f "$NGINX_TEMPLATE" ]; then
     echo "Script File Not Found"
     exit 1
 fi
-source "$NGINX_TEMPLATE"
+. "$NGINX_TEMPLATE"
 
 # Get Build From Temp
 TEMP_PATH="temp/${COMMIT_HASH}"
