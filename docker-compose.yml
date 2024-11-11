@@ -1,0 +1,14 @@
+version: "3"
+services:
+  frontend:
+    container_name: poomasi-front
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./builds:/var/www
+      - ./nginx/sites.conf:/etc/nginx/conf.d/sites.conf
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+    ports:
+      - 80:80
+      - 443:443
