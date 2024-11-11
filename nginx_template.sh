@@ -1,3 +1,5 @@
+#!/bin/bash 
+
 generate_nginx_config() {
     local SUBDOMAIN=$1
     local DOMAIN=$2

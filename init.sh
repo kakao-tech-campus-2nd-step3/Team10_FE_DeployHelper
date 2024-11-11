@@ -1,3 +1,5 @@
+#!/bin/bash 
+
 TEMP_PATH="temp"
 BUILDS_PATH="builds"
 SITES_PATH="nginx/sites-enabled"

@@ -1,3 +1,5 @@
+#!/bin/bash 
+
 # Check Arguments
 # $1 = subdomain name
 # $2 = domain

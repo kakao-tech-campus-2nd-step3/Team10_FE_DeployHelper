@@ -1,3 +1,5 @@
+#!/bin/bash 
+
 # Check Arguments
 # $1 = subdomain name
 # $2 = domain
@@ -28,7 +30,7 @@ if [ ! -f "$NGINX_TEMPLATE" ]; then
     echo "Script File Not Found"
     exit 1
 fi
-. "$NGINX_TEMPLATE"
+source "$NGINX_TEMPLATE"
 
 # Get Build From Temp
 TEMP_PATH="temp/${COMMIT_HASH}"
