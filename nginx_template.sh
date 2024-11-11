@@ -18,13 +18,19 @@ generate_nginx_config() {
         exit 1
     fi
 
+    if [ "$SUBDOMAIN" == "master" ]; then
+        SERVERNAME="${DOMAIN} www.${DOMAIN}"
+    else
+        SERVERNAME="${SUBDOMAIN}.${DOMAIN}"
+    fi
+
     cat << EOF
 server {
     listen 80;
     listen [::]:80;
-    server_name ${SUBDOMAIN}.${DOMAIN};
+    server_name ${SERVERNAME};
 
-    root ${WEB_ROOT};
+    root  ${WEB_ROOT};
     index index.html;
 
     # Cloudflare의 실제 IP 주소를 얻기 위한 설정
@@ -55,22 +61,7 @@ server {
 
     # 기본 location 블록
     location / {
-        try_files \$uri \$uri/ =404;
-        
-        # 기본 헤더 설정
-        add_header X-Frame-Options "SAMEORIGIN" always;
-        add_header X-XSS-Protection "1; mode=block" always;
-        add_header X-Content-Type-Options "nosniff" always;
-        add_header Referrer-Policy "no-referrer-when-downgrade" always;
-        
-        # 정적 파일 캐싱 설정
-        expires 1d;
-        add_header Cache-Control "public, no-transform";
-    }
-
-    # 숨김 파일 접근 제한
-    location ~ /\. {
-        deny all;
+        try_files $uri /index.html;
     }
 
     # 로그 설정
